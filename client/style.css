@@ -1,0 +1,44 @@
+.list-wrapper {
+    margin-left: .625rem;
+    margin-right: .625rem;
+    width: 250px;
+    margin-bottom: 3.75rem;
+    margin-top: 5.25rem;
+    text-align: center;
+}
+
+.list-wrapper img {
+    height: 200px;
+    width: 200px;
+}
+
+.product-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.quantityInput{
+    max-width: 30px;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+th {
+    font-size: medium;
+}
+
+tr {
+    font-size: small;
+}
+
+.bag-wrapper {
+    text-align: center;
+}
+
+.cart-list img{
+    height: 100px;
+    width: 100px;
+}
