@@ -5,7 +5,7 @@ const getProducts = async () => {
   const response = await $.ajax({
     type: "GET",
     xhrFields: { withCredentials: true },
-    url: `${apiUrl}/products`,
+    url: `${apiUrl}/product`,
   });
   // console.log(response);
   return response;

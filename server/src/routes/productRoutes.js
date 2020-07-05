@@ -1,63 +1,18 @@
-const express   = require("express");
+const express = require("express");
 const Product = require("../models/Product");
-const router    = express.Router();
-
-// const products = [
-//     {
-//         id: "01", // add sku if time allows
-//         name: "Poster",
-//         price: "12.99", // change to cents
-//         stock: 10,
-//     },
-//     {
-//         id: "02",
-//         name: "Flower Pot",
-//         price: "4.99",
-//         stock: 20,
-//     },
-//     {
-//         id: "03",
-//         name: "Vases",
-//         price: "16.99",
-//         stock: 30,
-//     },
-//     {
-//         id: "04",
-//         name: "Clocks",
-//         price: "2.49",
-//         stock: 40,
-//     },
-//     {
-//         id: "05",
-//         name: "Storage boxes",
-//         price: "14.99",
-//         stock: 25,
-//     },
-//     {
-//         id: "06",
-//         name: "Home fragrance",
-//         price: "6.99",
-//         stock: 15,
-//     },
-//     {
-//         id: "07",
-//         name: "Noticeboards",
-//         price: "14.99",
-//         stock: 35,
-//     }
-// ]
+const router = express.Router();
 
 
 // Public routes
 router.get('/', (req, res) => {
     Product.find().then((data) => {
         res.json(data);
-    });    
+    });
 });
 
 // Admin routes
 router.use((req, res, next) => {
-    if(req.session.user.username == "admin") {
+    if (req.session.user.username == "admin") {
         console.log(req.session);
         next();
     } else {
@@ -67,8 +22,38 @@ router.use((req, res, next) => {
 
 router.post("/new", (req, res) => {
     Product.create(req.body).then((data) => {
-      res.send(data);
+        res.send(data);
     });
-  });
+});
+
+
+//Update Product by - Admin or Checkout Process
+router.patch("/update/:id", (req, res) => {
+    console.log("id: " + req.params.id);
+    console.log(req.body);
+    // update the stock according to order quantity
+    let newStock;
+    // Calculate new stock with quantity
+    Product.findById({ _id: req.params.id })
+        .then((data) => {
+            newStock = { "stock": data.stock - req.body.quantity };
+
+            if (req.body.quantity < data.stock) {
+                updateProduct(newStock);
+            } else {
+                res.status(401).send("Stock on low. Try again.")
+            }
+        })
+
+    function updateProduct(newStock) {
+        Product.findByIdAndUpdate({ _id: req.params.id }, req.body && newStock, { new: true })
+            .then((data) => {
+                res.json(data);
+            })
+            .catch(() => {
+                res.status(404).send("Product not found");
+            });
+    }
+});
 
 module.exports = router;

@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use("/user", userRouter);
-app.use("/products", productRoutes);
+app.use("/product", productRoutes);
 app.use("/checkout", cartRoutes);
 
 // Start server

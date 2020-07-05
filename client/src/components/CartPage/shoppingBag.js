@@ -88,18 +88,26 @@ const checkout = (ctx, next) => {
   </tr>
     `);
     }
+    // addTotal(total);
     addTotal(total);
-    console.log(total);
+
   })
 
-  function addTotal(total) {
-    $(".cart-list").append(`<tr>
+function addTotal(total){
+  $(".cart-list").append(`<tr>
   <td></td>
   <td></td>
   <td></td>
   <td style="font-weight: 800;">Total:</td>
-  <td style="font-weight: 800;">$${total}</td>
+  <td style="font-weight: 800;"><p>$${total}</p>
+  <button class="btn btn-primary" id="checkoutBtn" type="submit">Checkout</button>
+  </td>
   </tr>`);
-  }
+  $("#checkoutBtn").on("click", ()=>{
+    console.log("Thank you for your order!");
+  })
+}
+
+next();
 }
 export default checkout;
