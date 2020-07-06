@@ -21,24 +21,4 @@ router.get("/", async (req, res) => {
     }
 });
 
-// router.post("/new")
-// as soon as a user login, they should land on shopping, creat cart ID and redirect to homepage - workaround
-
-// router.get("/buy", async (req, res) => {
-//     // sample array to be replaced with frontend data
-//     // get all the items sent from frontend
-//     let arrary = [{ 
-//         id: "5efc6174b66d08f204143c98",
-//         quantity: 2
-//     },
-//     {
-//         id: "5efc56be64493fefe8a201f2",
-//         quantity: 1
-//     }]
-//     // check id and update stock status
-//     arrary.forEach((i,v)=>{
-//         Product.findOne({_id: arrary.id})
-//     })
-// });
-
 module.exports = router;

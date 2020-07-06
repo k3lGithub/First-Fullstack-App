@@ -19,7 +19,6 @@ router.post('/signup', async (req, res) => {
     }catch{
         res.status(status).send(message);
     }
-
 });
 
 //auth middleware check
@@ -40,8 +39,12 @@ res.status(status).send(message);
 })
 
 router.get("/logout", async(req, res) => {
+    if(req.session.user){
     await req.session.destroy();
     res.send("logged out");
+    }else{
+        res.status("404").send("Please login first");
+    }
 })
 
 module.exports = router;

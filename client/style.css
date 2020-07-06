@@ -1,3 +1,5 @@
+html,body{overflow-y: scroll; }
+
 .list-wrapper {
     margin-left: .625rem;
     margin-right: .625rem;
@@ -22,7 +24,7 @@
     text-align: center;
 }
 
-h3 {
+h3, .bag-wrapper {
     text-align: center;
 }
 
@@ -34,11 +36,15 @@ tr {
     font-size: small;
 }
 
-.bag-wrapper {
-    text-align: center;
-}
 
 .cart-list img{
     height: 100px;
     width: 100px;
 }
+
+.noitems{
+    text-align: center;
+    font-size: medium;
+}
+
+.removeIcon{ position: relative;}

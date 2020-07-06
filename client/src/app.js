@@ -7,8 +7,8 @@ import nav from './components/common/nav.js';
 import homepage from './components/HomePage/products.js';
 import login from './components/userPages/loginUserForm.js';
 import newUser from './components/userPages/createUserForm.js';
-import checkout from './components/CartPage/shoppingBag.js';
-
+import shoppingBag from './components/CartPage/shoppingBag.js';
+import logout from './api/user/logoutApi.js';
 
 const showPages = () => {
     //configure routes
@@ -23,11 +23,10 @@ const showPages = () => {
 
     page('/signup', nav, newUser);
 
-    page('/checkout', nav, checkout);
+    page('/checkout', nav, shoppingBag);
 
-
-
-    
+    page('/logout', nav, logout);
+  
     page({hashbang: true});
 }
 

@@ -23,7 +23,7 @@ const products = async (ctx, next) => {
       productList.append(`<div class="list-wrapper">   
       <img src=${product.img}></img>
       <p>${product.name}</p>
-      <p>${product.price}</p>
+      <p>$${product.price}</p>
       <div class="quantity">
       <button id="plus${i}" type="button">
       <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -50,6 +50,7 @@ const products = async (ctx, next) => {
       $(`#plus${i}`).on("click", () => {
         let currentNo = parseInt($(`#quantityInput${i}`).val());
         let addNo = currentNo+1;
+        // Limit on order quantity
         if(currentNo<9){
           $(`#quantityInput${i}`).val(addNo);
         }

@@ -10,24 +10,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// Admin routes
-router.use((req, res, next) => {
-    if (req.session.user.username == "admin") {
-        console.log(req.session);
-        next();
-    } else {
-        res.status(401).send("Admin Access is required");
-    }
-});
-
-router.post("/new", (req, res) => {
-    Product.create(req.body).then((data) => {
-        res.send(data);
-    });
-});
-
-
-//Update Product by - Admin or Checkout Process
+//Update Product by - Checkout Process
 router.patch("/update/:id", (req, res) => {
     console.log("id: " + req.params.id);
     console.log(req.body);
@@ -55,5 +38,24 @@ router.patch("/update/:id", (req, res) => {
             });
     }
 });
+
+// Admin routes
+router.use((req, res, next) => {
+    if (req.session.user.username == "admin") {
+        console.log(req.session);
+        next();
+    } else {
+        res.status(401).send("Admin Access is required");
+    }
+});
+
+router.post("/new", (req, res) => {
+    Product.create(req.body).then((data) => {
+        res.send(data);
+    });
+});
+
+
+
 
 module.exports = router;

@@ -30,9 +30,9 @@ const signup = (ctx, next) => {
       <label for="phone">Email</label>
       <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="email">Email</span>
+          <span class="input-group-text" >Email</span>
            </div>
-           <input type="text" class="form-control" id="validationServerUsername" placeholder="Email" aria-describedby="inputGroupPrepend3" required>
+           <input type="text" class="form-control" id="email" placeholder="Email" aria-describedby="inputGroupPrepend3" required>
          </div>
     </div>
   </div>
@@ -40,7 +40,7 @@ const signup = (ctx, next) => {
   <div class="form-row address">
     <div class="col-md-6 mb-3">
       <label for="validationServer03">Address</label>
-      <input type="text" class="form-control id="address" placeholder="City" required>
+      <input type="text" class="form-control" id="address" placeholder="City" required>
     </div>
 
     <div class="col-md-3 mb-3 state">
@@ -67,8 +67,10 @@ const signup = (ctx, next) => {
   `);
 
 
+  // $(document).on("submit", "#form-user-credentials", (e) => {
 
-  $("#form-signup").submit((e) => {
+    $(document).on("submit", "#form-signup", (e)=>{
+  // $("#form-signup").submit((e) => {
     e.preventDefault();
     let username = $("#username").val();
     console.log(username);
