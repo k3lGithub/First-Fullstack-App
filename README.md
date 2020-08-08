@@ -39,7 +39,7 @@ $ npx nodemon index.js
 
 ### Challenges and Improvements:
 * **Challenges**:
-    * Add to Cart functionality - having to update quantity in local storage if cart and item alrady exist 
+    * Add to Cart functionality - having to update quantity in local storage if cart and item already exist 
     * Integration with UI and Backend
 * Further **Improvements** can be done to:
     * Refactoring
